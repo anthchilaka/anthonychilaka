@@ -204,15 +204,16 @@ function App() {
       {/* VIEW 1: MAIN HOME PAGE */}
       {currentView === 'home' && (
         <main className="flex-grow">
-          <header id="home" className="hero-viewport relative flex items-center justify-center text-center text-white scroll-mt-20 overflow-hidden">
+          <header id="home" className="hero-viewport relative flex items-center justify-center text-center text-white scroll-mt-20 overflow-hidden bg-[#0c0c0c]">
             
             {/* Desktop Banner (Hidden on Mobile) */}
             <img src={banner} alt="Banner" className="hidden md:block absolute inset-0 w-full h-full object-cover z-0 brightness-50" loading="eager" />
             
-            {/* Mobile Banner (Hidden on Desktop) */}
-            <img src={mobileBanner} alt="Mobile Banner" className="block md:hidden absolute inset-0 w-full h-full object-cover z-0 brightness-50" loading="eager" />
+            {/* Mobile Banner (Hidden on Desktop) - Changed to object-contain so it doesn't cut off */}
+            <img src={mobileBanner} alt="Mobile Banner" className="block md:hidden absolute inset-0 w-full h-full object-contain p-4 z-0 brightness-[0.85]" loading="eager" />
             
-            <div className="relative z-10 max-w-4xl px-4 mt-24"> 
+            {/* TEXT: Added "hidden md:block" so this text disappears on mobile but stays on desktop */}
+            <div className="relative z-10 max-w-4xl px-4 mt-24 hidden md:block"> 
               <p className="text-xl md:text-2xl font-light text-gray-200 mt-[40px]">Bridging Data and Creative Strategy</p>
             </div>
 
