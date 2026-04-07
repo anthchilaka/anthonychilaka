@@ -4,7 +4,7 @@ import './index.css'
 // 1. Import Brand Assets
 import logo from './assets/brand/logo.webp'
 import banner from './assets/brand/banner.webp'
-import mobileBanner from './assets/brand/mobile.webp' // <-- New Mobile Banner Import
+import mobileBanner from './assets/brand/mobileview.webp' // <-- Updated Mobile Banner Import
 
 // 2. Import Icons
 import linkedin from './assets/icons/linkedin.webp'
@@ -209,8 +209,8 @@ function App() {
             {/* Desktop Banner (Hidden on Mobile) */}
             <img src={banner} alt="Banner" className="hidden md:block absolute inset-0 w-full h-full object-cover z-0 brightness-50" loading="eager" />
             
-            {/* Mobile Banner (Hidden on Desktop) - Changed to object-contain so it doesn't cut off */}
-            <img src={mobileBanner} alt="Mobile Banner" className="block md:hidden absolute inset-0 w-full h-full object-contain p-4 z-0 brightness-[0.85]" loading="eager" />
+            {/* Mobile Banner (Hidden on Desktop) - Changed to object-cover */}
+            <img src={mobileBanner} alt="Mobile Banner" className="block md:hidden absolute inset-0 w-full h-full object-cover z-0 brightness-[0.85]" loading="eager" />
             
             {/* TEXT: Added "hidden md:block" so this text disappears on mobile but stays on desktop */}
             <div className="relative z-10 max-w-4xl px-4 mt-24 hidden md:block"> 
