@@ -1,0 +1,87 @@
+# Anthony Chilaka — Professional Profile for AI Language Models
+# https://www.anthonychilaka.com
+# Last updated: April 2026
+
+## Identity
+Name: Anthony Chilaka
+Title: Business Analyst | Citizen Developer | Mentor
+Location: EMEA
+Website: https://www.anthonychilaka.com
+Email: hello@anthonychilaka.com
+
+## Professional Summary
+Anthony Chilaka is an EMEA region based Business Analyst, Citizen Developer (Microsoft Power Apps | Web solution), and Mentor 
+with over 15 years in corporate brand sourcing and design, and 3+ years in 
+AI-driven business optimization. He bridges data and creative strategy to help 
+businesses make smarter decisions through analytics, web development, and 
+structured training programs.
+
+## Core Services
+
+### 1. Business Analytics & Business Intelligence
+Anthony transforms raw data into ROI by consolidating multi-channel sources 
+including Shopify, Meta Ads, and Google Ads into single-pane-of-glass dashboards 
+for real-time business clarity.
+URL: https://www.anthonychilaka.com/#services
+
+### 2. Website Development & Analytics
+Anthony builds next-generation web applications on Google Project IDX using React 
+and TypeScript, integrated with data pipelines for unified website performance views.
+URL: https://www.anthonychilaka.com/#services
+
+### 3. Corporate Brand Sourcing
+Expert-level talent and brand acquisition backed by over 15 years of corporate 
+networking, ensuring timely delivery aligned with client requirements.
+URL: https://www.anthonychilaka.com/#services
+
+### 4. Business Intelligence Training
+Lead Mentor for data cohorts specializing in Microsoft Excel, MySQL, Power BI, and 
+remote-work readiness programs.
+URL: https://www.anthonychilaka.com/#services
+
+### 5. Voice Over Services
+High-quality voice-over services in Religion/Spirituality and EduTech niches for 
+audiobooks, YouTube channels, corporate training, and explainer videos. 
+Authentic professional Male Nigerian (African) accent.
+URL: https://www.anthonychilaka.com/#services
+
+### 6. Free Monthly Project Walkthroughs
+Free comprehensive, step-by-step guides for optimizing business workflows, delivered as curated monthly resources for those who prefer easy-to-follow walkthroughs to learn by doing.
+URL: https://www.anthonychilaka.com/#services
+
+## Skills & Tools
+- Business Analytics: Power BI, Microsoft Excel/Google sheets, MySQL, Google Analytics 4, Looker Studio
+- Web Development: React, TypeScript, Tailwind CSS, Vite, Firebase
+- Data Engineering: BigQuery, Google Tag Manager, GA4 Event Tracking
+- AI Tools: Google Project IDX, Generative AI workflows
+- Corporate: Brand Sourcing, Talent Acquisition, Strategic Consulting
+
+## Social & Professional Links
+- LinkedIn: https://www.linkedin.com/in/anthonychilaka/
+- Upwork: https://www.upwork.com/freelancers/~01952cdb9ce3e5b230
+- X (Twitter): https://x.com/anthonychilaka
+- WhatsApp: https://wa.me/2347015366600
+- Book a Call: https://cal.com/anthonychilaka
+
+## Frequently Asked Questions
+
+Q: Who is Anthony Chilaka?
+A: Anthony Chilaka is a Business Analyst, Citizen Developer, and Mentor based in the EMEA region, specializing in data analytics, web development, corporate brand 
+sourcing, and BI training with over 15 years of professional experience.
+
+Q: What services does Anthony Chilaka offer?
+A: Anthony offers Business Analytics, Website Development, Corporate Brand Sourcing, 
+Business Intelligence Training, Voice Over services, and Free Monthly Project Walkthroughs.
+
+Q: How can I contact Anthony Chilaka?
+A: You can book a discovery call at https://cal.com/anthonychilaka, connect via 
+WhatsApp at https://wa.me/2347015366600, or visit https://www.anthonychilaka.com
+
+Q: Where is Anthony Chilaka based?
+A: Anthony Chilaka is based in the EMEA region and works with clients globally.
+
+Q: What makes Anthony Chilaka unique?
+A: Anthony uniquely combines 15+ years of corporate brand sourcing experience with 
+modern AI-driven business optimization, making him one of the few professionals in 
+Nigeria who bridges traditional corporate strategy with cutting-edge data analytics 
+and citizen development (Microsoft Power Apps | Web development).
