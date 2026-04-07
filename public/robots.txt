@@ -1,0 +1,32 @@
+# Standard Search Engine Crawlers
+User-agent: *
+Allow: /
+
+# Google Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# AI Engine Crawlers (GEO - Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap Location
+Sitemap: https://www.anthonychilaka.com/sitemap.xml
