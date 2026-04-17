@@ -1,18 +1,17 @@
-// 1. ADD THIS AT THE VERY TOP (ABOVE ALL IMPORTS)
-// This tells TypeScript that window.dataLayer exists and prevents the red lines.
+// TypeScript declaration for window.dataLayer
 declare global {
   interface Window {
-    dataLayer: Record<string, unknown>[];
+    dataLayer: Record<string, unknown>[]
   }
 }
 
-import { useState, useEffect } from 'react' 
+import { useState, useEffect } from 'react'
 import './index.css'
 
 // 1. Import Brand Assets
 import logo from './assets/brand/logo.webp'
 import banner from './assets/brand/banner.webp'
-import mobileBanner from './assets/brand/mobileview.webp'
+import mobileBanner from './assets/brand/mobileview.webp' // <-- Updated Mobile Banner Import
 
 // 2. Import Icons
 import linkedin from './assets/icons/linkedin.webp'
@@ -101,22 +100,22 @@ const VOICEOVERS_DATA = [
 ];
 
 function App() {
-  // Logic to push to dataLayer on mount
+  const [currentView, setCurrentView] = useState('home')
+  const [selectedVoiceover, setSelectedVoiceover] = useState<any | null>(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false) // Mobile Menu State
+
+  // Push page_render_mode to dataLayer on app mount
   useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || []
     window.dataLayer.push({
       event: 'page_render_mode_set',
       page_render_mode: 'SPA'
-    });
-  }, []);
-
-  const [currentView, setCurrentView] = useState('home')
-  const [selectedVoiceover, setSelectedVoiceover] = useState<any | null>(null)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false) 
+    })
+  }, [])
 
   const navigateToSection = (id: string) => {
     setCurrentView('home')
-    setIsMobileMenuOpen(false) 
+    setIsMobileMenuOpen(false) // Auto-close mobile menu when a link is clicked
     setTimeout(() => {
       const element = document.getElementById(id)
       if (element) {
@@ -169,14 +168,14 @@ function App() {
               </a>
             </div>
 
-            <a href="https://cal.com/anthonychilaka" target="_blank" rel="noopener noreferrer"
+            <a href="https://cal.com/anthonychilaka" target="_blank" rel="noopener noreferrer" 
                className="bg-[#0F0F0F] hover:bg-[#C41E3A] text-white px-5 py-2 md:px-6 md:py-2.5 rounded text-sm font-heading font-semibold transition-colors duration-300">
               Book Now
             </a>
 
             {/* Mobile Hamburger Button */}
-            <button
-              className="md:hidden text-[#0F0F0F] hover:text-[#C41E3A] focus:outline-none ml-2"
+            <button 
+              className="md:hidden text-[#0F0F0F] hover:text-[#C41E3A] focus:outline-none ml-2" 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -226,15 +225,16 @@ function App() {
             {/* Desktop Banner (Hidden on Mobile) */}
             <img src={banner} alt="Banner" className="hidden md:block absolute inset-0 w-full h-full object-cover z-0 brightness-50" loading="eager" />
             
-            {/* Mobile Banner (Hidden on Desktop) */}
+            {/* Mobile Banner (Hidden on Desktop) - Changed to object-cover */}
             <img src={mobileBanner} alt="Mobile Banner" className="block md:hidden absolute inset-0 w-full h-full object-cover z-0 brightness-[0.85]" loading="eager" />
             
-            <div className="relative z-10 max-w-4xl px-4 mt-24 hidden md:block">
+            {/* TEXT: Added "hidden md:block" so this text disappears on mobile but stays on desktop */}
+            <div className="relative z-10 max-w-4xl px-4 mt-24 hidden md:block"> 
               <p className="text-xl md:text-2xl font-light text-gray-200 mt-[40px]">Bridging Data and Creative Strategy</p>
             </div>
 
             {/* Bouncing Scroll Indicator (Mobile Only) */}
-            <div
+            <div 
               className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center animate-bounce md:hidden cursor-pointer"
               onClick={() => navigateToSection('about')}
             >
@@ -335,8 +335,8 @@ function App() {
                 </div>
 
                 <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden border border-gray-100">
-                  <a href="#"
-                     onClick={(e) => { e.preventDefault(); setCurrentView('voiceovers'); window.scrollTo(0,0); }}
+                  <a href="#" 
+                     onClick={(e) => { e.preventDefault(); setCurrentView('voiceovers'); window.scrollTo(0,0); }} 
                      className="block h-48 overflow-hidden group cursor-pointer" title="click for more">
                     <img src={voiceover} alt="Voice Over" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   </a>
@@ -347,8 +347,8 @@ function App() {
                 </div>
 
                 <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden border border-gray-100">
-                  <a href="#"
-                     onClick={(e) => { e.preventDefault(); setCurrentView('templates'); window.scrollTo(0,0); }}
+                  <a href="#" 
+                     onClick={(e) => { e.preventDefault(); setCurrentView('templates'); window.scrollTo(0,0); }} 
                      className="block h-48 overflow-hidden group cursor-pointer" title="click for more">
                     <img src={webbuild} alt="Website Development" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   </a>
@@ -359,8 +359,8 @@ function App() {
                 </div>
 
                 <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden border border-gray-100">
-                  <a href="#"
-                     onClick={(e) => { e.preventDefault(); setCurrentView('walkthroughs'); window.scrollTo(0,0); }}
+                  <a href="#" 
+                     onClick={(e) => { e.preventDefault(); setCurrentView('walkthroughs'); window.scrollTo(0,0); }} 
                      className="block h-48 overflow-hidden group cursor-pointer" title="click to view walkthroughs">
                     <img src={walkthrough} alt="Monthly Project Walkthroughs" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   </a>
@@ -378,9 +378,9 @@ function App() {
             <div className="max-w-7xl mx-auto px-6 text-center">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#1B3022] mb-10">Work in Action</h2>
               
-              <a href="#"
-                 onClick={(e) => { e.preventDefault(); setCurrentView('portfolio_loading'); window.scrollTo(0,0); }}
-                 className="block max-w-4xl mx-auto rounded-xl overflow-hidden shadow-md mb-12 group cursor-pointer"
+              <a href="#" 
+                 onClick={(e) => { e.preventDefault(); setCurrentView('portfolio_loading'); window.scrollTo(0,0); }} 
+                 className="block max-w-4xl mx-auto rounded-xl overflow-hidden shadow-md mb-12 group cursor-pointer" 
                  title="click to view portfolio">
                 <img src={portfolio} alt="Portfolio Header" loading="lazy" className="w-full h-auto transition-transform duration-500 group-hover:scale-105" />
               </a>
@@ -391,7 +391,275 @@ function App() {
         </main>
       )}
 
-      {/* FOOTER & REMAINING VIEWS (Omitted for Brevity) */}
+      {/* VIEW 2: TEMPLATES PAGE */}
+      {currentView === 'templates' && (
+         <main className="flex-grow bg-white pt-36 pb-24">
+          <div className="max-w-7xl mx-auto px-6">
+            <button 
+              onClick={() => navigateToSection('services')}
+              className={`mb-8 text-[#C41E3A] font-semibold flex items-center hover:underline group cursor-pointer`}
+            >
+              <BackIcon /> Back to Services
+            </button>
+
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#1B3022]">Available Templates</h2>
+              <div className="w-20 h-1 bg-[#C41E3A] mx-auto mt-4"></div>
+              <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Explore the layouts below to find the perfect foundation for your project.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-gray-50 rounded-xl overflow-hidden p-5 flex flex-col items-center border border-gray-100">
+                <a href="https://wpastra.com/website-templates/business/" target="_blank" rel="noopener noreferrer" className="w-full h-56 rounded-md overflow-hidden group shadow-sm block cursor-pointer">
+                  <img src={businesstemplate} alt="Business Template" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </a>
+                <h3 className="text-lg font-heading font-bold mt-5 mb-2 text-[#0F0F0F]">Business Template</h3>
+                <a href="https://wpastra.com/website-templates/business/" target="_blank" rel="noopener noreferrer" className="text-[#C41E3A] hover:underline font-semibold text-sm break-words text-center w-full">View Template Live &rarr;</a>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl overflow-hidden p-5 flex flex-col items-center border border-gray-100">
+                <a href="https://wpastra.com/website-templates/finance/" target="_blank" rel="noopener noreferrer" className="w-full h-56 rounded-md overflow-hidden group shadow-sm block cursor-pointer">
+                  <img src={financetemplate} alt="Finance Template" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </a>
+                <h3 className="text-lg font-heading font-bold mt-5 mb-2 text-[#0F0F0F]">Finance Template</h3>
+                <a href="https://wpastra.com/website-templates/finance/" target="_blank" rel="noopener noreferrer" className="text-[#C41E3A] hover:underline font-semibold text-sm break-words text-center w-full">View Template Live &rarr;</a>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl overflow-hidden p-5 flex flex-col items-center border border-gray-100">
+                <a href="https://wpastra.com/website-templates/restaurant/" target="_blank" rel="noopener noreferrer" className="w-full h-56 rounded-md overflow-hidden group shadow-sm block cursor-pointer">
+                  <img src={restauranttemplate} alt="Restaurant Template" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </a>
+                <h3 className="text-lg font-heading font-bold mt-5 mb-2 text-[#0F0F0F]">Restaurant Template</h3>
+                <a href="https://wpastra.com/website-templates/restaurant/" target="_blank" rel="noopener noreferrer" className="text-[#C41E3A] hover:underline font-semibold text-sm break-words text-center w-full">View Template Live &rarr;</a>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl overflow-hidden p-5 flex flex-col items-center border border-gray-100">
+                <a href="https://wpastra.com/website-templates/beauty-fashion/" target="_blank" rel="noopener noreferrer" className="w-full h-56 rounded-md overflow-hidden group shadow-sm block cursor-pointer">
+                  <img src={beautyandfashion} alt="Beauty and Fashion" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </a>
+                <h3 className="text-lg font-heading font-bold mt-5 mb-2 text-[#0F0F0F]">Beauty and Fashion</h3>
+                <a href="https://wpastra.com/website-templates/beauty-fashion/" target="_blank" rel="noopener noreferrer" className="text-[#C41E3A] hover:underline font-semibold text-sm break-words text-center w-full">View Template Live &rarr;</a>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl overflow-hidden p-5 flex flex-col items-center border border-gray-100">
+                <a href="https://wpastra.com/website-templates/service/" target="_blank" rel="noopener noreferrer" className="w-full h-56 rounded-md overflow-hidden group shadow-sm block cursor-pointer">
+                  <img src={ngoservices} alt="NGO/Services" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </a>
+                <h3 className="text-lg font-heading font-bold mt-5 mb-2 text-[#0F0F0F]">NGO/Services</h3>
+                <a href="https://wpastra.com/website-templates/service/" target="_blank" rel="noopener noreferrer" className="text-[#C41E3A] hover:underline font-semibold text-sm break-words text-center w-full">View Template Live &rarr;</a>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl overflow-hidden p-5 flex flex-col items-center border border-gray-100">
+                <a href="https://wa.me/2347015366600?text=Hi%20Anthony,%20I%20have%20viewed%20your%20services%20and%20would%20like%20to%20discuss%20further" target="_blank" rel="noopener noreferrer" className="w-full h-56 rounded-md overflow-hidden group shadow-sm block cursor-pointer">
+                  <img src={enterprise} alt="Enterprise Solution" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </a>
+                <h3 className="text-lg font-heading font-bold mt-5 mb-2 text-[#0F0F0F]">Enterprise Solution?</h3>
+                <a href="https://wa.me/2347015366600?text=Hi%20Anthony,%20I%20have%20viewed%20your%20services%20and%20would%20like%20to%20discuss%20further" target="_blank" rel="noopener noreferrer" className="text-[#C41E3A] hover:underline font-semibold text-sm break-words text-center w-full max-w-[200px] truncate">Contact to Discuss &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </main>
+      )}
+
+      {/* VIEW 3: VOICE OVERS PAGE */}
+      {currentView === 'voiceovers' && (
+        <main className="flex-grow bg-white pt-36 pb-24">
+          <div className="max-w-5xl mx-auto px-6">
+            <button 
+              onClick={() => navigateToSection('services')}
+              className={`mb-8 text-[#C41E3A] font-semibold flex items-center hover:underline group cursor-pointer`}
+            >
+              <BackIcon /> Back to Services
+            </button>
+
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#1B3022]">Voice Over Portfolio</h2>
+              <div className="w-20 h-1 bg-[#C41E3A] mx-auto mt-4"></div>
+              <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Listen to samples below featuring an authentic, professional Male Nigerian accent.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              {VOICEOVERS_DATA.map((vo) => (
+                <div 
+                  key={vo.id} 
+                  className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100 cursor-pointer group"
+                  onClick={() => setSelectedVoiceover(vo)}
+                  title="Click to play and view details"
+                >
+                  <div className="h-64 overflow-hidden relative">
+                    <img src={vo.imageSrc} alt={vo.header} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="bg-white/90 text-[#1B3022] rounded-full p-4 transform scale-75 group-hover:scale-100 transition-transform">
+                        <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-heading font-bold text-[#0F0F0F]">{vo.header}</h3>
+                    <p className="text-sm text-gray-500 mt-2">{vo.genre}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </main>
+      )}
+
+      {/* VIEW 4: WALKTHROUGHS PAGE */}
+      {currentView === 'walkthroughs' && (
+        <main className="flex-grow bg-white pt-36 pb-24">
+          <div className="max-w-5xl mx-auto px-6">
+            <button 
+              onClick={() => navigateToSection('services')}
+              className={`mb-8 text-[#C41E3A] font-semibold flex items-center hover:underline group cursor-pointer`}
+            >
+              <BackIcon /> Back to Services
+            </button>
+
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#1B3022]">Monthly Project Walkthroughs</h2>
+              <div className="w-20 h-1 bg-[#C41E3A] mx-auto mt-4"></div>
+              <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Curated, step-by-step guides for optimizing your business. Coming soon!</p>
+            </div>
+
+            <div className="flex justify-center mt-10">
+              <div className="max-w-3xl w-full rounded-2xl overflow-hidden shadow-xl border border-gray-100">
+                <img src={walkthroughloading} alt="Walkthroughs Loading" loading="lazy" className="w-full h-auto object-cover" />
+              </div>
+            </div>
+          </div>
+        </main>
+      )}
+
+      {/* VIEW 5: PORTFOLIO LOADING PAGE */}
+      {currentView === 'portfolio_loading' && (
+        <main className="flex-grow bg-white pt-36 pb-24">
+          <div className="max-w-5xl mx-auto px-6">
+            <button 
+              onClick={() => navigateToSection('portfolio')}
+              className={`mb-8 text-[#C41E3A] font-semibold flex items-center hover:underline group cursor-pointer`}
+            >
+              <BackIcon /> Back to Portfolio
+            </button>
+
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#1B3022]">Work in Action</h2>
+              <div className="w-20 h-1 bg-[#C41E3A] mx-auto mt-4"></div>
+              <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Past execution workflows, analytic implementations, and published case studies.</p>
+            </div>
+
+            <div className="flex justify-center mt-10">
+              <div className="max-w-4xl w-full rounded-2xl overflow-hidden shadow-xl border border-gray-100">
+                <img src={portfolioloading} alt="Portfolio Content Loading" loading="lazy" className="w-full h-auto object-cover" />
+              </div>
+            </div>
+          </div>
+        </main>
+      )}
+
+      {/* VOICEOVER MODAL */}
+      {selectedVoiceover && (
+        <div className="fixed inset-0 z-[100] bg-white/70 backdrop-blur-sm flex items-center justify-center p-4 md:p-8">
+          <div className="bg-white border border-gray-100 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto shadow-2xl relative flex flex-col pt-10">
+            
+            <button 
+              onClick={() => setSelectedVoiceover(null)}
+              className="absolute top-5 right-5 text-gray-500 hover:text-red-500 transition"
+              aria-label="Close"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+
+            <div className="px-10 pb-6 border-b border-gray-100">
+              <h2 className="text-3xl font-heading font-bold text-[#0F0F0F] pr-10">{selectedVoiceover.header}</h2>
+            </div>
+
+            <div className="p-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
+              <div className="lg:col-span-4 space-y-8">
+                <div>
+                  <p className="text-sm text-gray-500">My role. <span className="text-gray-800 font-medium">{selectedVoiceover.role}</span></p>
+                </div>
+                
+                <div>
+                  <p className="text-sm text-gray-500 mb-2">Project description.</p>
+                  <p className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap">
+                    {selectedVoiceover.description}
+                  </p>
+                </div>
+
+                <div className="space-y-1">
+                  <p className="text-sm text-gray-600">Title: {selectedVoiceover.title}</p>
+                  <p className="text-sm text-gray-600">Genre: {selectedVoiceover.genre}</p>
+                </div>
+              </div>
+
+              <div className="lg:col-span-8 bg-gray-50 rounded-xl p-8 border border-gray-100 box-shadow-inner">
+                <h3 className="font-heading font-bold text-lg mb-4 text-[#0F0F0F]">
+                  {selectedVoiceover.title}
+                </h3>
+
+                <audio 
+                  controls 
+                  src={selectedVoiceover.audioSrc} 
+                  className="w-full mb-8 outline-none"
+                  controlsList="nodownload"
+                  preload="none"
+                >
+                  Your browser does not support the audio element.
+                </audio>
+
+                <div className="text-sm text-gray-700 leading-relaxed space-y-4">
+                  <h4 className="font-semibold text-gray-900 uppercase tracking-wider text-xs mb-2">Transcript</h4>
+                  {selectedVoiceover.transcript.split('\n').map((paragraph: string, idx: number) => (
+                    <p key={idx}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* DISCOVERY CALL FOOTER */}
+      <footer id="contact" className="py-20 bg-[#1B3022] text-white overflow-hidden scroll-mt-10 mt-auto">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-4xl font-heading font-bold mb-6">Ready to Optimize?</h2>
+            
+            <p className="text-gray-300 text-lg mb-10 max-w-md">
+              Connect with me directly by booking a slot on my <strong>calendar</strong> (link to the right) or via any of the social media <strong>links</strong> listed below.
+            </p>
+            
+            <div className="flex gap-6">
+              <a href="https://www.linkedin.com/in/anthonychilaka/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform bg-white/10 hover:bg-white/20 p-3 rounded-full">
+                <img src={linkedin} alt="LinkedIn" loading="lazy" className="w-5 h-5 opacity-90" />
+              </a>
+              <a href="https://www.upwork.com/freelancers/~01952cdb9ce3e5b230?s=1017484851352698939" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform bg-white/10 hover:bg-white/20 p-3 rounded-full">
+                <img src={upwork} alt="Upwork" loading="lazy" className="w-5 h-5 opacity-90" />
+              </a>
+              <a href="https://x.com/anthonychilaka" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform bg-white/10 hover:bg-white/20 p-3 rounded-full">
+                <img src={xIcon} alt="X" loading="lazy" className="w-5 h-5 opacity-90" />
+              </a>
+              <a href="https://wa.me/2347015366600?text=Hi%20Anthony,%20I%20have%20viewed%20your%20services%20and%20would%20like%20to%20discuss%20further" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform bg-white/10 hover:bg-white/20 p-3 rounded-full flex items-center justify-center">
+                <img src={whatsapp} alt="WhatsApp" loading="lazy" className="w-5 h-5 opacity-90 scale-[2]" />
+              </a>
+            </div>
+          </div>
+
+          <div className="relative cursor-pointer overflow-hidden rounded-2xl group shadow-2xl" onClick={() => window.open('https://cal.com/anthonychilaka', '_blank')}>
+            <img src={call} alt="Book a discovery call" loading="lazy" className="brightness-75 group-hover:brightness-100 transition duration-500 w-full object-cover h-80" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="bg-white/80 backdrop-blur-sm text-[#1B3022] px-8 py-3.5 rounded-full font-heading font-bold shadow-lg group-hover:scale-105 transition duration-300">
+                schedule 1-on-1
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="text-center text-sm text-gray-400 mt-20 border-t border-white/10 pt-8">
+          © {new Date().getFullYear()} Anthony Chilaka. All rights reserved.
+        </div>
+      </footer>
     </div>
   )
 }
