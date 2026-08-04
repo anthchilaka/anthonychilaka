@@ -2,6 +2,13 @@
 
 These guidelines define the operational principles and capabilities of an AI agent (e.g., Gemini) interacting with React projects within the Firebase Studio environment. The goal is to enable an efficient, automated, and error-resilient application design and development workflow, focusing on modern React practices.
 
+## **Project-Specific Overrides**
+
+This project is mid-migration from a single-page app (SPA) to a true static multi-page app (MPA), to fix a crawlability/SEO problem the SPA architecture cannot solve. Two files take precedence over the generic guidance below wherever they conflict:
+
+- **`.claude/skills/website-build/SKILL.md`** — project-specific architecture, file structure, coding conventions, and safety rules. In particular, this **supersedes the "Routing and Navigation" section below** — this project does not use a client-side router.
+- **`blueprint.md`** — the current build plan and task state. Check this at the start of every session before making changes.
+
 ## **Environment & Context Awareness**
 
 The AI operates within the Firebase Studio development environment, which provides a Code OSS-based IDE with deep integration for React and Firebase services.
@@ -84,50 +91,20 @@ The AI will use a consistent styling approach, preferring modern solutions like 
 2. Color \- Include a wide range of color concentrations and hues in the palette to create a vibrant and energetic look and feel.
 3. Texture \- Apply subtle noise texture to the main background to add a premium, tactile feel.
 4. Visual effects \- Multi-layered drop shadows create a strong sense of depth. Cards have a soft, deep shadow to look "lifted."
-5. Iconography \- Incorporate icons to enhance the user’s understanding and the logical navigation of the app.
+5. Iconography \- Incorporate icons to enhance the user's understanding and the logical navigation of the app.
 6. Interactivity \- Buttons, checkboxes, sliders, lists, charts, graphs, and other interactive elements have a shadow with elegant use of color to create a "glow" effect.
 
 ## **Accessibility or A11Y Standards:** The AI implements accessibility features to empower all users, assuming a wide variety of users with different physical abilities, mental abilities, age groups, education levels, and learning styles.
 
 ## **Routing and Navigation**
 
-For routing, the AI will use `react-router-dom` as the default.
+This project does **not** use `react-router-dom` or any client-side router. Routing is handled via a true static multi-page architecture: each route is its own HTML entry point, built via Vite's multi-entry config (`vite.config.ts` → `rollupOptions.input`), and served directly by Firebase Hosting with `cleanUrls: true` and no rewrites.
 
-- **Basic Routing:**
+This is a deliberate architecture decision, not an oversight — a client-side router alone does not solve crawlability, since content still only exists after JS executes. See `.claude/skills/website-build/SKILL.md` for the full architecture, file structure, and conventions.
 
-```
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-```
-
-- **Navigation:**
-
-```
-import { Link, useNavigate } from "react-router-dom";
-
-function MyComponent() {
-  const navigate = useNavigate();
-
-  return (
-    <div>
-      <Link to="/about">About</Link>
-      <button onClick={() => navigate("/")}>Go Home</button>
-    </div>
-  );
-}
-```
+- **New page:** `[page]/index.html` + `src/pages/[page]/main.tsx` + `src/pages/[page]/[Page].tsx` + entry in `vite.config.ts` + row in `sitemap.xml`. Never skip or reorder this sequence.
+- **Internal navigation:** use plain `<a href="/path">` tags — a real browser navigation to a real static page, not client-side routing.
+- **Analytics:** every page's `main.tsx` must call `pushPageView` with `page_render_mode: 'mpa'` — this is the canonical signal BigQuery uses to distinguish SPA vs MPA traffic. Never omit it.
 
 ## **Component Library Selection**
 
