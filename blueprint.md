@@ -40,6 +40,7 @@ This is also a measured comparison project — GTM/GA4/BigQuery track both the S
   4. Real static `<title>` + meta description per page (not `react-helmet-async`)
   5. `llms.txt` at site root — optional/low-priority, add once all routes are final only if cheap to add; no official Google, Anthropic, or OpenAI documentation confirms it's read, and Google's own guide explicitly says to skip it
   6. `robots.txt` GEO completeness check — confirm `ClaudeBot`, `Claude-User`, `Claude-SearchBot`, `GPTBot`, `OAI-SearchBot`, and `ChatGPT-User` are all explicitly listed, not just covered by the wildcard `Allow: /`. As of Sep 2026 the live `public/robots.txt` explicitly lists `ClaudeBot`/`GPTBot` (the training crawlers) but not `Claude-SearchBot`/`OAI-SearchBot` (the ones that actually drive AI search citations) — add them explicitly during this phase
+  7. **Geographic discoverability (added Sep 2026)** — Anthony is actively searching for freelance EMEA roles. Two distinct signals, not interchangeable: (a) "EMEA" as plain positioning copy only (hero line, meta description) — not a real resolvable place, never used as a schema/GBP value; (b) 11 named locations (Lagos, Ibadan, Port Harcourt, Kaduna, Abuja, Bauchi, Kano, Plateau, Jos, Owerri, Awka) used literally in `/services`' `Service` schema `areaServed` property and in a real "Areas I work with" content section. Manual step (Anthony): set up Google Business Profile as a **Service Area Business** listing all 11 — no physical office needed, distinct from a storefront listing. Full detail in `.claude/skills/seo-geo/SKILL.md`'s Geographic Discoverability section.
 
 ## Current Change — MPA build, phased plan
 
@@ -47,7 +48,7 @@ This is also a measured comparison project — GTM/GA4/BigQuery track both the S
 
 **Phase 1 — Scaffold:** per-page HTML entries for the route map above; `vite.config.ts` multi-entry config; MPA-target `firebase.json`.
 
-**Phase 2 — SEO/GEO content:** apply the 6-item plan above per route as it's scaffolded.
+**Phase 2 — SEO/GEO content:** apply the 7-item plan above per route as it's scaffolded.
 
 **Phase 3 — Visual/interaction build:** route-specific effects per the table above, GSAP/CSS/Intersection-Observer based, no WebGL.
 
