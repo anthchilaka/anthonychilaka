@@ -21,15 +21,17 @@ This is also a measured comparison project — GTM/GA4/BigQuery track both the S
 
 | Route | Content | Notes |
 |---|---|---|
-| `/` | Home / hero | |
+| `/` | Home / hero | Pixelated/halftone portrait photo as the hero background, matching the reference site's home page (corrected Sep 2026 — see note below) |
 | `/portfolio` | Featured work | Scroll-triggered reveal (GSAP + ScrollTrigger) |
-| `/walkthroughs` | Project walkthroughs | Pixelating effect per thumbnail, triggered on scroll-into-view (Intersection Observer) — works on mobile, not hover-only; reuses the existing GTM 25/50/75/90% scroll-depth event pattern |
+| `/walkthroughs` | Project walkthroughs | No pixelation effect — the reference site's project sections (Work/Lab/Articles) are text/vector cards only, with no thumbnail imagery to apply it to. Styled consistently with the rest; reuses the existing GTM 25/50/75/90% scroll-depth event pattern |
 | `/ai-automation` | Workflow automation case studies (Claude Code, Claude Cowork, n8n, etc.) | Styled as case studies (problem → tool/approach → quantified outcome), matching `/portfolio` — quantified business impact over hobby-tinkering framing, since the portfolio's purpose is job applications |
 | `/services` | Services | |
 | `/templates` | Templates | |
 | `/blog`, `/blog/[slug]` | Blog | New — not on the current SPA |
-| `/about` | About | |
+| `/about` | About | Same pixelated/halftone portrait treatment as the home hero, placed alongside the work-experience/timeline list |
 | `/contact` | Contact | Hover effect + font animation on heading and interactive elements |
+
+- **Route map correction (Sep 2026):** the original mapping placed the pixelating effect on `/walkthroughs` thumbnails, triggered on scroll-into-view. A direct browser walkthrough of every section of mauriciojuba.com (via Claude in Chrome, not assumed from memory) found this was a misreading — the reference site has no thumbnail imagery anywhere; Work/Lab/Articles are text/vector cards only. The pixelated/halftone treatment only appears on the two personal portrait photos, hero and About. Corrected above. Anthony to supply a portrait photo for `/` and `/about` when those pages reach their visual/interaction build step (Phase 3).
 
 - SEO/GEO consolidated plan, applied per page as each route is scaffolded. Verified
   Sep 2026 against Google's, Anthropic's, and OpenAI's own official docs — full
